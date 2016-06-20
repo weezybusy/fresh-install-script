@@ -1,11 +1,11 @@
 #!/bin/bash
 
 echo "Installing useful packages..."
-sudo apt-get -y install compton gcc valgrind glibc-source make vim moc tmux xbacklight
+sudo apt-get -y install compton gcc valgrind glibc-source make vim moc xbacklight
 echo "Done!"
 
 echo "Making links to music..."
-ln -s /media/weezy/stuff/mus/{salad,jazz,mix} ~/Music
+ln -s /media/vi/stuff/mus/{salad,jazz,mix} ~/Music
 echo "Done!"
 
 echo "Clonning repos..."
