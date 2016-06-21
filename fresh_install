@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Installing useful packages..."
-sudo apt-get -y install compton gcc valgrind glibc-source make vim moc xbacklight
+sudo apt-get -y install compton gcc valgrind glibc-source make vim moc xbacklight tmux
 echo "Done!"
 
 echo "Making links to music..."
@@ -23,7 +23,7 @@ ln -svf ~/Templates/dotfiles/.bash_aliases ~
 ln -svf ~/Templates/dotfiles/.bashrc ~/.bashrc
 ln -svf ~/Templates/dotfiles/.gdbinit ~/.gdbinit
 ln -svf ~/Templates/dotfiles/.gitconfig ~/.gitconfig
-# ln -svf ~/Templates/dotfiles/.tmux.conf ~/.tmux.conf
+ln -svf ~/Templates/dotfiles/.tmux.conf ~/.tmux.conf
 ln -svf ~/Templates/dotfiles/.vimrc ~/.vimrc
 ln -svf ~/Templates/dotfiles/.Xresources ~/.Xresources
 ln -svf ~/Templates/dotfiles/compton.conf ~/.config/compton.conf
