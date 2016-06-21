@@ -12,6 +12,7 @@ echo "Clonning repos..."
 git clone https://github.com/weezybusy/dotfiles.git ~/Templates/dotfiles
 git clone https://github.com/morhetz/gruvbox.git ~/Templates/gruvbox
 git clone https://github.com/weezybusy/alarm.git ~/Templates/alarm
+echo "Done!"
 
 echo "Setting up alarm..."
 chmod u+x ~/Templates/alarm/wakeup
@@ -22,7 +23,7 @@ ln -svf ~/Templates/dotfiles/.bash_aliases ~
 ln -svf ~/Templates/dotfiles/.bashrc ~/.bashrc
 ln -svf ~/Templates/dotfiles/.gdbinit ~/.gdbinit
 ln -svf ~/Templates/dotfiles/.gitconfig ~/.gitconfig
-ln -svf ~/Templates/dotfiles/.tmux.conf ~/.tmux.conf
+# ln -svf ~/Templates/dotfiles/.tmux.conf ~/.tmux.conf
 ln -svf ~/Templates/dotfiles/.vimrc ~/.vimrc
 ln -svf ~/Templates/dotfiles/.Xresources ~/.Xresources
 ln -svf ~/Templates/dotfiles/compton.conf ~/.config/compton.conf
@@ -37,11 +38,11 @@ echo "Done!"
 echo "Setting up moc..."
 mocp -S
 ln -svf ~/Templates/dotfiles/.moc/config ~/.moc/config
+echo "Done!"
 
 echo "Unpacking glibc-source..."
-cd /usr/src/glibc
-sudo tar xf glibc-2.19.tar.xz
-cd
+sudo tar -xf /usr/src/glibc/glibc-2.19.tar.xz -C /usr/src/glibc
+echo "Done!"
 
 echo "Setting up crone..."
 crontab -e
