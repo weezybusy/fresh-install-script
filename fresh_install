@@ -5,7 +5,7 @@ sudo apt-get -y install compton gcc valgrind glibc-source make vim moc xbackligh
 echo "Done!"
 
 echo "Making links to music..."
-ln -s /media/vi/stuff/mus/{salad,jazz,mix} ~/Music
+ln -s /media/weezy/stuff/mus/{salad,jazz,mix} ~/Music
 echo "Done!"
 
 echo "Clonning repos..."
