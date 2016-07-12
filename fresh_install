@@ -10,12 +10,7 @@ echo "Done!"
 
 echo "Clonning repos..."
 git clone https://github.com/weezybusy/dotfiles.git ~/Templates/dotfiles
-git clone https://github.com/weezybusy/alarm.git ~/Templates/alarm
 git clone https://github.com/morhetz/gruvbox.git ~/Templates/gruvbox
-echo "Done!"
-
-echo "Setting up alarm..."
-chmod u+x ~/Templates/alarm/wakeup
 echo "Done!"
 
 echo "Seting links to dotfiles and configs..."
