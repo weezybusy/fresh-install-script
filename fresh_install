@@ -16,7 +16,7 @@ git clone https://github.com/PapirusDevelopmentTeam/papirus-icon-theme-gtk.git ~
 echo "Done!"
 
 echo "Setting links to dotfiles and configs..."
-ln -svf ~/Templates/dotfiles/{.bash_aliases,.bashrc,.gdbinit,.gdbinit,.tmux.conf,.vimrc,.Xresources} ~/
+ln -svf ~/Templates/dotfiles/{.bash_aliases,.bashrc,.gdbinit,.gdbinit,.tmux.conf,.vimrc,.Xresources,.gtkrc-2.0,.xscreensaver} ~/
 ln -svf ~/Templates/dotfiles/compton.conf ~/.config
 ln -svf ~/Templates/dotfiles/lxde-rc.xml ~/.config/openbox
 echo "Done!"
@@ -46,3 +46,5 @@ echo "Done!"
 echo "fix hanging on copying large files..."
 sudo vi /etc/rc.local
 echo "Done!"
+
+sudo reboot
