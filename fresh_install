@@ -22,7 +22,8 @@ ln -svf ~/Templates/dotfiles/lxde-rc.xml ~/.config/openbox
 echo "Done!"
 
 echo "Copying icons..."
-cp -r ~/Templates/Papirus/Papirus-GTK ~/.icons/Papirus
+mkdir -p ~/.icons
+cp -r ~/Templates/Papirus/Papirus-GTK ~/.icons
 echo "Done!"
 
 echo "Setting up vim theme..."
@@ -39,11 +40,11 @@ echo "Unpacking glibc-source..."
 sudo tar -xf /usr/src/glibc/glibc-2.19.tar.xz -C /usr/src/glibc
 echo "Done!"
 
-echo "Setting up crone..."
+echo "Setting up cron..."
 crontab -e
 echo "Done!"
 
-echo "fix hanging on copying large files..."
+echo "Fix hanging on copying large files..."
 sudo vi /etc/rc.local
 echo "Done!"
 
