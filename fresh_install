@@ -18,6 +18,7 @@ ln -svf ~/Templates/dotfiles/{.bash_aliases,.bashrc,.gdbinit,.gitconfig,.tmux.co
 ln -svf ~/Templates/dotfiles/compton.conf ~/.config
 ln -svf ~/Templates/dotfiles/lxde-rc.xml ~/.config/openbox
 ln -svf ~/Templates/Papirus/Papirus-GTK ~/.icons
+ln -svf ~/Templates/dotfiles/.themes ~/
 mkdir -p ~/.vim
 ln -svf ~/Templates/gruvbox/colors ~/.vim
 mocp -S
