@@ -17,10 +17,11 @@ ln -svf /media/$USER/work/{playground,salad,kr2,atbswp} ~/Documents
 ln -svf ~/Templates/dotfiles/{.bash_aliases,.bashrc,.gdbinit,.gitconfig,.vimrc,.Xresources} ~/
 ln -svf ~/Templates/dotfiles/compton.conf ~/.config
 ln -svf ~/Templates/dotfiles/lxde-rc.xml ~/.config/openbox
-ln -svf ~/Templates/Papirus/Papirus-GTK ~/.icons
+mkdir ~/.icons
+ln -svf ~/Templates/Papirus/Papirus-GTK ~/.icons/Papirus-GTK
 ln -svf ~/Templates/dotfiles/.themes ~/
 ln -svf ~/Templates/utils ~/Documents
-mkdir -p ~/.vim
+mkdir ~/.vim
 ln -svf ~/Templates/gruvbox/colors ~/.vim
 mocp -S
 ln -svf ~/Templates/dotfiles/.moc/config ~/.moc/config
