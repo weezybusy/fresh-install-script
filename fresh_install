@@ -37,3 +37,7 @@ echo "Done!"
 echo "Fix hanging on copying large files..."
 sudo vi /etc/rc.local
 echo "Done!"
+
+echo "Setup lightDM..."
+sudo vi /etc/lightdm/lightdm-gtk-greeter.conf
+echo "Done!"
