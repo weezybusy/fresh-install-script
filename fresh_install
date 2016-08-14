@@ -12,9 +12,9 @@ git clone https://github.com/PapirusDevelopmentTeam/papirus-icon-theme-gtk.git ~
 echo "Done!"
 
 echo "Setting links..."
-ln -svf /media/$USER/stuff/mus/{salad,jazz,mix} ~/Music
+ln -svf /media/$USER/stuff/mus/{salad,jazz} ~/Music
 ln -svf /media/$USER/work/{playground,salad,kr2,atbswp} ~/Documents
-ln -svf ~/Templates/dotfiles/{.bash_aliases,.bashrc,.gdbinit,.gitconfig,.tmux.conf,.vimrc,.Xresources,.xscreensaver} ~/
+ln -svf ~/Templates/dotfiles/{.bash_aliases,.bashrc,.gdbinit,.gitconfig,.vimrc,.Xresources} ~/
 ln -svf ~/Templates/dotfiles/compton.conf ~/.config
 ln -svf ~/Templates/dotfiles/lxde-rc.xml ~/.config/openbox
 ln -svf ~/Templates/Papirus/Papirus-GTK ~/.icons
