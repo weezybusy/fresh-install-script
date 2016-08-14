@@ -14,7 +14,8 @@ echo "Done!"
 echo "Setting links..."
 ln -svf /media/$USER/stuff/mus/{salad,jazz} ~/Music
 ln -svf /media/$USER/work/{playground,salad,kr2,atbswp} ~/Documents
-ln -svf ~/Templates/dotfiles/{.bash_aliases,.bashrc,.gdbinit,.gitconfig,.vimrc,.Xresources} ~/
+ln -svf
+~/Templates/dotfiles/{.bash_aliases,.bashrc,.gdbinit,.gitconfig,.vimrc,.Xresources,.tmux.conf} ~/
 ln -svf ~/Templates/dotfiles/compton.conf ~/.config
 ln -svf ~/Templates/dotfiles/lxde-rc.xml ~/.config/openbox
 mkdir ~/.icons
