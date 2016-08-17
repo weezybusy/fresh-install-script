@@ -19,7 +19,6 @@ ln -svf ~/Templates/dotfiles/lxde-rc.xml ~/.config/openbox
 mkdir ~/.icons
 ln -svf ~/Templates/Papirus/Papirus-GTK ~/.icons/Papirus-GTK
 ln -svf ~/Templates/dotfiles/.themes ~/
-ln -svf ~/Templates/utils ~/Documents
 mkdir ~/.vim
 ln -svf ~/Templates/gruvbox/colors ~/.vim
 mocp -S
