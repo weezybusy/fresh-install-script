@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Installing useful packages..."
-sudo apt -y install compton gcc valgrind glibc-source make vim moc xbacklight tmux
+sudo apt -y install compton gcc valgrind glibc-source make vim moc xbacklight tmux alsa-utils
 echo "Done!"
 
 echo "Cloning repos..."
