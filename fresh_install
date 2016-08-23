@@ -3,7 +3,7 @@
 echo "Installing useful packages..."
 apps='compton gcc valgrind glibc-source make vim moc tmux alsa-utils deluge '
 apps+='xbacklight firefox-esr zip unzip fonts-droid virtualenv python3-pip '
-apps+='evince gpicview leafpad lxappearance'
+apps+='evince gpicview leafpad lxappearance network-manager-gnome'
 sudo apt -y install $apps
 pip3 install --user tmuxp
 echo "Done!"
