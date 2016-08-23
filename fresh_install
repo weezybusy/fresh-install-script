@@ -2,7 +2,8 @@
 
 echo "Installing useful packages..."
 apps='compton gcc valgrind glibc-source make vim moc tmux alsa-utils deluge '
-apps+='xbacklight firefox-esr zip unzip fonts-droid virtualenv python3-pip'
+apps+='xbacklight firefox-esr zip unzip fonts-droid virtualenv python3-pip '
+apps+='evince gpicview'
 sudo apt -y install $apps
 echo "Done!"
 
