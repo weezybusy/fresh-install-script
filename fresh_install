@@ -3,7 +3,7 @@
 echo "Installing useful packages..."
 apps='alsa-utils compton xbacklight lxappearance fonts-droid '
 apps+='gcc valgrind glibc-source make vim tmux virtualenv python3-pip '
-apps+='firefox-esr moc deluge gpicview weechat'
+apps+='firefox-esr moc deluge weechat'
 sudo apt -y install $apps
 pip3 install --user tmuxp
 echo "Done!"
@@ -40,6 +40,11 @@ echo "Fix hanging on copying large files..."
 sudo vi /etc/rc.local
 echo "Done!"
 
-echo "Setup lightDM..."
+echo "Set lightDM..."
 sudo vi /etc/lightdm/lightdm-gtk-greeter.conf
+echo "Done!"
+
+echo "Set wallpaper..."
+cp /media/$USER/stuff/pic/wallpaper.png ~/Pictures
+chmod 644 ~/Pictures/wallpaper.png
 echo "Done!"
