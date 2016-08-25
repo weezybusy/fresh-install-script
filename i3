@@ -2,10 +2,9 @@
 
 echo "Installing packages..."
 apps='alsa-utils compton xbacklight lxappearance fonts-droid pcmanfm '
-apps+='gcc valgrind glibc-source make vim virtualenv python3-pip feh'
-apps+='firefox-esr moc deluge weechat htop youtube-dl scrot qalculate'
-sudo apt -y install $apps
-pip3 install --user tmuxp
+apps+='gcc valgrind glibc-source make vim virtualenv python3-pip feh '
+apps+='firefox-esr moc deluge weechat htop youtube-dl scrot qalculate '
+apps+='xscreensaver '
 echo "Done!"
 
 echo "Cloning repos..."
