@@ -41,3 +41,8 @@ echo "Done!"
 echo "Fix hanging on copying large files..."
 sudo vi /etc/rc.local
 echo "Done!"
+
+echo "Copy wallpaper..."
+mkdir ~/Pictures/.wallpapers
+cp /media/$USER/stuff/pic/wallpaper.png ~/Pictures/.wallpapers
+echo "Done!"
