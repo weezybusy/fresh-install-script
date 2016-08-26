@@ -4,7 +4,7 @@ echo "Installing packages..."
 apps='alsa-utils compton xbacklight lxappearance fonts-droid pcmanfm '
 apps+='gcc valgrind glibc-source make vim virtualenv python3-pip feh '
 apps+='firefox-esr moc deluge weechat htop youtube-dl scrot qalculate '
-apps+='xscreensaver '
+apps+='xscreensaver p7zip-full '
 echo "Done!"
 
 echo "Cloning repos..."
