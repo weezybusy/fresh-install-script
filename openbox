@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Installing useful packages..."
-apps='alsa-utils compton xbacklight lxappearance fonts-droid '
+apps='alsa-utils compton xbacklight pcmanfm lxappearance fonts-droid '
 apps+='gcc valgrind glibc-source make vim tmux virtualenv python3-pip '
 apps+='firefox-esr moc deluge weechat htop youtube-dl p7zip-full gmrun '
 sudo apt -y install $apps
@@ -19,10 +19,9 @@ ln -svf /media/$USER/work/{playground,salad,kr2,atbswp} ~/Documents
 ln -svf ~/Templates/dotfiles/{.bash_aliases,.bashrc,.gdbinit,.gitconfig,.vimrc,.Xresources,.tmux.conf,.profile,.tmuxp} ~/
 ln -svf ~/Templates/dotfiles/compton.conf ~/.config
 ln -svf ~/Templates/dotfiles/openbox/{rc.xml,menu.xml,autostart} ~/.config/openbox
+ln -svf ~/Templates/dotfiles/.moc ~/
 mkdir ~/.vim
 ln -svf ~/Templates/gruvbox/colors ~/.vim
-mocp -S
-ln -svf ~/Templates/dotfiles/.moc/config ~/.moc/config
 echo "Done!"
 
 echo "Unpacking glibc-source..."
@@ -35,13 +34,4 @@ echo "Done!"
 
 echo "Fix hanging on copying large files..."
 sudo vi /etc/rc.local
-echo "Done!"
-
-echo "Set lightDM..."
-sudo vi /etc/lightdm/lightdm-gtk-greeter.conf
-echo "Done!"
-
-echo "Set wallpaper..."
-cp /media/$USER/stuff/.wallpapers ~/Pictures
-chmod 644 ~/Pictures/.wallpapers/8.png
 echo "Done!"
