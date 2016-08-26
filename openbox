@@ -42,6 +42,6 @@ sudo vi /etc/lightdm/lightdm-gtk-greeter.conf
 echo "Done!"
 
 echo "Set wallpaper..."
-cp /media/$USER/stuff/pic/wallpapers ~/Pictures/.wallpapers
+cp /media/$USER/stuff/.wallpapers ~/Pictures
 chmod 644 ~/Pictures/.wallpapers/8.png
 echo "Done!"
