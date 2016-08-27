@@ -1,13 +1,22 @@
 #!/bin/bash
 
-su -c 'apt install sudo gcc valgrind glibc-source make vim gnome-icon-theme gnome-icon-theme-exrtas xpdf moc youtube-dl feh htop qalculate'
+echo "Installing useful packages..."
+apps="gcc valgrind glibc-source make vim gnome-icon-theme tmux weechat "
+apps+="gnome-icon-theme-extras xpdf moc youtube-dl feh htop qalculate "
+apps+="python3-pip virtualenv "
+sudo apt -y install $apps
+pip3 install --user tmuxp
+echo "Done!"
 
+echo "Cloning repos..."
+git clone https://github.com/weezybusy/dotfiles.git ~/Templates/dotfiles
 git clone https://github.com/morhetz/gruvbox.git ~/Templates/gruvbox
+echo "Done!"
 
 echo "Setting links..."
 ln -svf /media/$USER/stuff/mus/{salad,jazz} ~/Music
 ln -svf /media/$USER/work/{playground,salad,kr2,atbswp} ~/Documents
-ln -svf ~/Templates/dotfiles/{.bash_aliases,.bashrc,.gdbinit,.gitconfig,.vimrc,.Xresources,.gmrunrc} ~/
+ln -svf ~/Templates/dotfiles/{.bash_aliases,.bashrc,.gdbinit,.gitconfig,.vimrc,.Xresources,.tmux.conf,.profile,.tmuxp,.gmrunrc} ~/
 ln -svf ~/Templates/dotfiles/compton.conf ~/.config
 mkdir ~/.vim
 ln -svf ~/Templates/gruvbox/colors ~/.vim
@@ -15,9 +24,13 @@ ln -svf ~/Templates/dotfiles/.moc ~/
 echo "Done!"
 
 echo "Unpacking glibc-source..."
-su -c 'tar -xf /usr/src/glibc/glibc-2.19.tar.xz -C /usr/src/glibc'
+sudo 'tar -xf /usr/src/glibc/glibc-2.19.tar.xz -C /usr/src/glibc'
+echo "Done!"
+
+echo "Setting up cron..."
+crontab -e
 echo "Done!"
 
 echo "Fix hanging on copying large files..."
-su -c 'vi /etc/rc.local'
+sudo 'vi /etc/rc.local'
 echo "Done!"
