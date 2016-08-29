@@ -1,11 +1,11 @@
 #!/bin/bash
 
-echo "Installing useful packages..."
-apps="gcc valgrind glibc-source make vim gnome-icon-theme tmux weechat "
-apps+="gnome-icon-theme-extras xpdf moc youtube-dl feh htop qalculate "
+echo "Installing aps..."
+apps="gcc valgrind glibc-source make vim tmux weechat moc htop"
+apps+="gnome-icon-theme-extras  gnome-icon-theme qalculate "
 apps+="python3-pip virtualenv "
 sudo apt -y install $apps
-pip3 install --user tmuxp
+pip3 install --user tmuxp youtube-dl
 echo "Done!"
 
 echo "Cloning repos..."
