@@ -1,9 +1,8 @@
 #!/bin/bash
 
 echo "Installing aps..."
-apps="gcc valgrind glibc-source make vim tmux weechat moc htop"
-apps+="gnome-icon-theme-extras  gnome-icon-theme qalculate "
-apps+="python3-pip virtualenv "
+apps="gcc valgrind glibc-source make vim tmux weechat moc htop mplayer qalculate "
+apps+="python3-pip virtualenv python3-bs4, python3-requests"
 sudo apt -y install $apps
 pip3 install --user tmuxp youtube-dl
 echo "Done!"
