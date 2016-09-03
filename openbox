@@ -1,8 +1,9 @@
 #!/bin/bash
 
-echo "Installing aps..."
-apps="gcc valgrind glibc-source make vim tmux moc htop mplayer qalculate "
-apps+="python3-pip virtualenv python3-bs4 python3-requests gpicview"
+echo "Installing apps..."
+apps="alsa-utils xbacklight pcmanfm firefox-esr compton "
+apps+="gcc valgrind glibc-source make vim tmux moc htop mplayer qalculate "
+apps+="python3-pip virtualenv python3-bs4 python3-requests"
 sudo apt -y install $apps
 pip3 install --user tmuxp youtube-dl
 echo "Done!"
@@ -13,9 +14,10 @@ git clone https://github.com/morhetz/gruvbox.git ~/Templates/gruvbox
 echo "Done!"
 
 echo "Setting links..."
+ln -svf ~/Templates/dotfiles/openbox ~/.config
 ln -svf /media/$USER/stuff/mus/{salad,jazz} ~/Music
 ln -svf /media/$USER/work/{playground,salad,kr2,atbswp} ~/Documents
-ln -svf ~/Templates/dotfiles/{.bash_aliases,.bashrc,.gdbinit,.gitconfig,.vimrc,.Xresources,.tmux.conf,.profile,.tmuxp,.gmrunrc} ~/
+ln -svf ~/Templates/dotfiles/{.bash_aliases,.bashrc,.gdbinit,.gitconfig,.vimrc,.Xresources,.tmux.conf,.profile,.tmuxp} ~/
 ln -svf ~/Templates/dotfiles/compton.conf ~/.config
 mkdir ~/.vim
 ln -svf ~/Templates/gruvbox/colors ~/.vim
