@@ -3,7 +3,7 @@
 echo "Installing apps..."
 apps="alsa-utils xbacklight pcmanfm firefox-esr compton "
 apps+="gcc valgrind glibc-source make vim tmux moc htop mplayer qalculate "
-apps+="python3-pip virtualenv python3-bs4 python3-requests"
+apps+="python3-pip virtualenv python3-bs4 python3-requests gnome-icon-theme"
 sudo apt -y install $apps
 pip3 install --user tmuxp youtube-dl
 echo "Done!"
