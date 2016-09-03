@@ -1,8 +1,8 @@
 #!/bin/bash
 
 echo "Installing aps..."
-apps="gcc valgrind glibc-source make vim tmux weechat moc htop mplayer qalculate "
-apps+="python3-pip virtualenv python3-bs4, python3-requests"
+apps="gcc valgrind glibc-source make vim tmux moc htop mplayer qalculate "
+apps+="python3-pip virtualenv python3-bs4 python3-requests gpicview"
 sudo apt -y install $apps
 pip3 install --user tmuxp youtube-dl
 echo "Done!"
@@ -23,7 +23,7 @@ ln -svf ~/Templates/dotfiles/.moc ~/
 echo "Done!"
 
 echo "Unpacking glibc-source..."
-sudo 'tar -xf /usr/src/glibc/glibc-2.19.tar.xz -C /usr/src/glibc'
+sudo tar -xf /usr/src/glibc/glibc-2.19.tar.xz -C /usr/src/glibc
 echo "Done!"
 
 echo "Setting up cron..."
@@ -31,5 +31,5 @@ crontab -e
 echo "Done!"
 
 echo "Fix hanging on copying large files..."
-sudo 'vi /etc/rc.local'
+sudo vi /etc/rc.local
 echo "Done!"
