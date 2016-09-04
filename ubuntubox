@@ -1,0 +1,37 @@
+#!/bin/bash
+
+echo "Installing apps..."
+apps="alsa-utils xbacklight pcmanfm firefox compton ttf-ubuntu-font-family "
+apps+="gcc valgrind glibc-source make vim tmux moc htop mplayer qalculate "
+apps+="python3-pip virtualenv python3-bs4 python3-requests gnome-icon-theme "
+apps+="dmz-cursor-theme lxappearance gpicview deluge "
+sudo apt -y install $apps
+pip3 install --user tmuxp youtube-dl
+echo "Done!"
+
+echo "Cloning repos..."
+git clone https://github.com/weezybusy/dotfiles.git ~/Templates/dotfiles
+git clone https://github.com/morhetz/gruvbox.git ~/Templates/gruvbox
+echo "Done!"
+
+echo "Setting links..."
+ln -svf ~/Templates/dotfiles/ubuntu/openbox ~/.config
+ln -svf ~/Templates/dotfiles/{.bash_aliases,.bashrc,.gdbinit,.gitconfig,.vimrc,.Xresources,.tmux.conf,.profile,.tmuxp} ~/
+ln -svf /media/$USER/work/{playground,salad,kr2,atbswp} ~/Documents
+ln -svf /media/$USER/stuff/mus/{salad,jazz} ~/Music
+ln -svf ~/Templates/dotfiles/compton.conf ~/.config
+ln -svf ~/Templates/dotfiles/moc ~/.moc
+mkdir ~/.vim
+ln -svf ~/Templates/gruvbox/colors ~/.vim
+
+echo "Unpacking glibc-source..."
+sudo tar -xf /usr/src/glibc/glibc-2.19.tar.xz -C /usr/src/glibc
+echo "Done!"
+
+echo "Setting up cron..."
+crontab -e
+echo "Done!"
+
+echo "Fix hanging on copying large files..."
+sudo vi /etc/rc.local
+echo "Done!"
