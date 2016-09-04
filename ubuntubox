@@ -24,10 +24,6 @@ ln -svf ~/Templates/dotfiles/ubuntu/.moc ~/
 mkdir ~/.vim
 ln -svf ~/Templates/gruvbox/colors ~/.vim
 
-echo "Copying wallpapers..."
-cp -r /media/$USER/stuff/.wallpapers ~/Pictures
-echo "Done!"
-
 echo "Unpacking glibc-source..."
 sudo tar -xf /usr/src/glibc/*.tar.xz -C /usr/src/glibc
 echo "Done!"
