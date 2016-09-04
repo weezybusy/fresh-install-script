@@ -20,7 +20,7 @@ ln -svf ~/Templates/dotfiles/{.bash_aliases,.bashrc,.gdbinit,.gitconfig,.vimrc,.
 ln -svf /media/$USER/work/{playground,salad,kr2,atbswp} ~/Documents
 ln -svf /media/$USER/stuff/mus/{salad,jazz} ~/Music
 ln -svf ~/Templates/dotfiles/compton.conf ~/.config
-ln -svf ~/Templates/dotfiles/moc ~/.moc
+ln -svf ~/Templates/dotfiles/ubuntu/.moc ~/
 mkdir ~/.vim
 ln -svf ~/Templates/gruvbox/colors ~/.vim
 
