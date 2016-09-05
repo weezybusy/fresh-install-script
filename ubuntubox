@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Installing apps..."
-apps="alsa-utils xbacklight firefox compton gcc valgrind glibc-source make "
+apps="alsa-utils xbacklight firefox compton gcc valgrind make "
 apps+="python3-pip virtualenv dmenu moc "
 sudo apt -y install $apps
 pip3 install --user tmuxp youtube-dl
@@ -23,10 +23,6 @@ mocp -S
 cp -r /usr/share/moc/themes ~/.moc
 ln -svf ~/Templates/dotfiles/ubuntu/config ~/.moc
 chmod 644 ~/.moc/config
-echo "Done!"
-
-echo "Unpacking glibc-source..."
-sudo tar -xf /usr/src/glibc/*.tar.xz -C /usr/src/glibc
 echo "Done!"
 
 echo "Setting up cron..."
