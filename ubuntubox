@@ -1,8 +1,7 @@
 #!/bin/bash
 
 echo "Installing apps..."
-apps="alsa-utils xbacklight compton gcc valgrind make "
-apps+="python3-pip virtualenv dmenu moc mplayer feh "
+apps="alsa-utils xbacklight dmenu compton gcc valgrind make python3-pip virtualenv firefox moc mplayer feh"
 sudo apt -y install $apps
 pip3 install --user youtube-dl
 echo "Done!"
