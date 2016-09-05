@@ -1,33 +1,40 @@
 #!/bin/bash
 
-echo "Installing apps..."
+# Install apps
 apps="alsa-utils xbacklight dmenu compton gcc valgrind make python3-pip virtualenv firefox moc mplayer feh"
 sudo apt -y install $apps
 pip3 install --user youtube-dl
-echo "Done!"
 
-echo "Cloning repos..."
+# Get things from github.com
 git clone https://github.com/weezybusy/dotfiles.git ~/Templates/dotfiles
 git clone https://github.com/morhetz/gruvbox.git ~/Templates/gruvbox
-echo "Done!"
 
-echo "Setting links..."
+# Make links
 ln -svf ~/Templates/dotfiles/ubuntu/openbox ~/.config
 ln -svf ~/Templates/dotfiles/{.bash_aliases,.bashrc,.gitconfig,.vimrc,.Xresources,.tmux.conf,.profile} ~/
-sudo mkdir /mnt/{work,stuff,movie,usb}
 ln -svf ~/Templates/dotfiles/compton.conf ~/.config
+
+# Setup Vim
 mkdir ~/.vim
 ln -svf ~/Templates/gruvbox/colors ~/.vim
+
+# Setup Moc Player
 mocp -S
 cp -r /usr/share/moc/themes ~/.moc
 ln -svf ~/Templates/dotfiles/ubuntu/config ~/.moc
 chmod 644 ~/.moc/config
-echo "Done!"
 
-echo "Setting up cron..."
+# Mount devices
+sudo mkdir /mnt/{work,stuff,movie,usb}
+sudo mount /dev/sdb1 /mnt/stuff
+sudo mount /dev/sdc1 /mnt/work
+
+# Setup wallpaper
+cp /mnt/stuff/.wallpapers/colors.jpg ~/Pictures
+feh --bg-fill ~/Pictures/colors.jpg
+
+# Setup autostart
 crontab -e
-echo "Done!"
 
-echo "Fix hanging on copying large files..."
+# Fix hanging on copying large files
 sudo vi /etc/rc.local
-echo "Done!"
