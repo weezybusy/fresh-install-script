@@ -4,7 +4,7 @@ echo "Installing apps..."
 apps="alsa-utils xbacklight firefox compton gcc valgrind make "
 apps+="python3-pip virtualenv dmenu moc mplayer "
 sudo apt -y install $apps
-pip3 install --user tmuxp youtube-dl
+pip3 install --user youtube-dl
 echo "Done!"
 
 echo "Cloning repos..."
@@ -14,7 +14,7 @@ echo "Done!"
 
 echo "Setting links..."
 ln -svf ~/Templates/dotfiles/ubuntu/openbox ~/.config
-ln -svf ~/Templates/dotfiles/{.bash_aliases,.bashrc,.gitconfig,.vimrc,.Xresources,.tmux.conf,.profile,.tmuxp} ~/
+ln -svf ~/Templates/dotfiles/{.bash_aliases,.bashrc,.gitconfig,.vimrc,.Xresources,.tmux.conf,.profile} ~/
 sudo mkdir /mnt/{work,stuff,movie,usb}
 ln -svf ~/Templates/dotfiles/compton.conf ~/.config
 mkdir ~/.vim
