@@ -1,9 +1,8 @@
 #!/bin/bash
 
 echo "Installing apps..."
-apps="alsa-utils xbacklight pcmanfm firefox compton deluge feh lxappearance "
-apps+="gcc valgrind glibc-source make vim tmux moc htop mplayer qalculate "
-apps+="python3-pip virtualenv ttf-ubuntu-font-family dmz-cursor-theme dmenu "
+apps="alsa-utils xbacklight firefox compton gcc valgrind glibc-source make "
+apps+="python3-pip virtualenv dmenu moc "
 sudo apt -y install $apps
 pip3 install --user tmuxp youtube-dl
 echo "Done!"
@@ -15,11 +14,15 @@ echo "Done!"
 
 echo "Setting links..."
 ln -svf ~/Templates/dotfiles/{.bash_aliases,.bashrc,.gdbinit,.gitconfig,.vimrc,.Xresources,.tmux.conf,.profile,.tmuxp} ~/
-ln -svf /media/$USER/work/{playground,salad,kr2,atbswp} ~/Documents
-ln -svf /media/$USER/stuff/mus/{salad,jazz} ~/Music
+sudo mkdir /mnt/{work,stuff,movie,usb}
 ln -svf ~/Templates/dotfiles/compton.conf ~/.config
 mkdir ~/.vim
 ln -svf ~/Templates/gruvbox/colors ~/.vim
+mocp -S
+cp -r /usr/share/moc/themes ~/.moc
+ln -svf ~/Templates/dotfiles/ubuntu/config ~/.moc
+chmod 644 ~/.moc/config
+echo "Done!"
 
 echo "Unpacking glibc-source..."
 sudo tar -xf /usr/src/glibc/*.tar.xz -C /usr/src/glibc
