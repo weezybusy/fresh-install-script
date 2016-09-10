@@ -39,12 +39,3 @@ echo "Done!"
 echo "Fix hanging on copying large files..."
 sudo vi /etc/rc.local
 echo "Done!"
-
-echo "Set lightDM..."
-sudo vi /etc/lightdm/lightdm-gtk-greeter.conf
-echo "Done!"
-
-echo "Set wallpaper..."
-cp /media/$USER/stuff/pic/wallpaper.png ~/Pictures
-chmod 644 ~/Pictures/wallpaper.png
-echo "Done!"
