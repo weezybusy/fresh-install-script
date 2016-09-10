@@ -15,7 +15,7 @@ git clone https://github.com/PapirusDevelopmentTeam/papirus-icon-theme-gtk.git ~
 echo "Done!"
 
 echo "Setting links..."
-ln -svf /media/$USER/stuff/mus/{salad,jazz} ~/Music
+ln -svf /media/$USER/stuff/mus/{salad,jazz,radio} ~/Music
 ln -svf /media/$USER/work/{playground,salad,kr2,atbswp} ~/Documents
 ln -svf ~/Templates/dotfiles/{.bash_aliases,.bashrc,.gdbinit,.gitconfig,.vimrc,.Xresources,.tmux.conf,.profile,.tmuxp} ~/
 ln -svf ~/Templates/dotfiles/compton.conf ~/.config
