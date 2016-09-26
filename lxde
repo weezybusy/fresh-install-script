@@ -25,12 +25,9 @@ ln -svf ~/Templates/dotfiles/config ~/.moc
 
 echo "Unpacking glibc-source..."
 sudo tar -xf /usr/src/glibc/glibc-2.19.tar.xz -C /usr/src/glibc
-echo "Done!"
 
 echo "Setting up cron..."
 crontab -e
-echo "Done!"
 
 echo "Fix hanging on copying large files..."
 sudo vi /etc/rc.local
-echo "Done!"
