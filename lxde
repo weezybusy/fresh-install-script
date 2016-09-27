@@ -6,7 +6,7 @@ apps+='gcc valgrind glibc-source make vim tmux virtualenv python3-pip '
 apps+='firefox-esr moc deluge weechat htop youtube-dl mpv qalculate xarchiver '
 apps+='leafpad gpicview gparted minidlna '
 sudo apt -y install $apps
-pip3 install --user youtube-dl
+pip3 install --user youtube-dl pyradio
 
 echo "Cloning repos..."
 git clone https://github.com/weezybusy/dotfiles.git ~/Templates/dotfiles
