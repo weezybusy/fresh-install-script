@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Installing useful packages..."
-apps='alsa-utils compton xbacklight pulseaudio wicd '
+apps='alsa-utils compton xbacklight pulseaudio pavucontrol wicd '
 apps+='gcc valgrind glibc-source make vim tmux virtualenv python3-pip '
 apps+='firefox-esr moc deluge weechat htop youtube-dl mpv qalculate xarchiver '
 apps+='leafpad gpicview gparted minidlna lxappearance fonts-cantarell'
