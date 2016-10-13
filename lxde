@@ -1,10 +1,10 @@
 #!/bin/bash
 
 echo "Installing useful packages..."
-apps='alsa-utils compton xbacklight '
+apps='alsa-utils compton xbacklight pulseaudio wicd '
 apps+='gcc valgrind glibc-source make vim tmux virtualenv python3-pip '
 apps+='firefox-esr moc deluge weechat htop youtube-dl mpv qalculate xarchiver '
-apps+='leafpad gpicview gparted minidlna '
+apps+='leafpad gpicview gparted minidlna lxappearance fonts-cantarell'
 sudo apt -y install $apps
 pip3 install --user youtube-dl pyradio
 
