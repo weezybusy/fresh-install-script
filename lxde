@@ -4,7 +4,7 @@ echo "Installing useful packages..."
 apps='compton xbacklight pulseaudio pavucontrol wicd redshift '
 apps+='gcc valgrind glibc-source make vim tmux python3-pip '
 apps+='firefox-esr moc deluge youtube-dl qalculate xarchiver '
-apps+='gparted minidlna lxappearance fonts-cantarell '
+apps+='gparted minidlna lxappearance fonts-cantarell dunst'
 sudo apt -y install $apps
 pip3 install --user youtube-dl pyradio
 
@@ -16,7 +16,7 @@ echo "Setting links..."
 ln -svf /media/$USER/stuff/mus/{salad,jazz,stations.csv} ~/Music
 ln -svf /media/$USER/work/{playground,salad,kr2,atbswp} ~/Documents
 ln -svf ~/Templates/dotfiles/{.bash_aliases,.bashrc,.gdbinit,.gitconfig,.vimrc,.Xresources,.tmux.conf,.profile} ~
-ln -svf ~/Templates/dotfiles/{compton.conf,redshift.conf} ~/.config
+ln -svf ~/Templates/dotfiles/{compton.conf,redshift.conf,dunst} ~/.config
 ln -svf ~/Templates/dotfiles/lxde-rc.xml ~/.config/openbox
 mkdir ~/.vim
 ln -svf ~/Templates/gruvbox/colors ~/.vim
