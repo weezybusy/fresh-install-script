@@ -4,7 +4,7 @@ echo "Installing useful packages..."
 apps='compton xbacklight pulseaudio pavucontrol wicd redshift '
 apps+='gcc valgrind glibc-source make vim tmux python3-pip '
 apps+='firefox-esr moc deluge youtube-dl qalculate xarchiver '
-apps+='gparted minidlna lxappearance fonts-cantarell dunst'
+apps+='gparted minidlna lxappearance fonts-roboto dunst'
 sudo apt -y install $apps
 pip3 install --user youtube-dl pyradio
 
