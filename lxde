@@ -1,19 +1,43 @@
 #!/bin/bash
 
-apps='compton xbacklight pulseaudio pavucontrol redshift gcc valgrind make \
-glibc-source tmux vim python3-pip moc minidlna'
-sudo apt -y install $apps
-git clone https://github.com/weezybusy/dotfiles.git ~/Templates/dotfiles
-git clone https://github.com/morhetz/gruvbox.git ~/Templates/gruvbox
-ln -svf /media/$USER/stuff/music/{salad,jazz} ~/Music
-ln -svf /media/$USER/work/sandbox ~/Documents
-ln -svf ~/Templates/dotfiles/{.bash_aliases,.bashrc,.gdbinit,.gitconfig,.vimrc,.Xresources,.tmux.conf,.minidlna} ~
-ln -svf ~/Templates/dotfiles/{compton.conf,redshift.conf} ~/.config
-ln -svf ~/Templates/dotfiles/lxde-rc.xml ~/.config/openbox
-mkdir ~/.vim
-ln -svf ~/Templates/gruvbox/colors ~/.vim
+# Install apps.
+sudo apt -y install compton xbacklight pavucontrol redshift gcc valgrind \
+        make glibc-source tmux vim python3-pip moc minidlna qalculate gparted
+pip3 install --upgrade --user pip youtube-dl pyradio
+
+# Add repos.
+git clone https://github.com/weezybusy/dotfiles.git $HOME/Templates/dotfiles
+git clone https://github.com/morhetz/gruvbox.git $HOME/Templates/gruvbox
+
+# Make links.
+ln -sv /media/$USER/stuff/music/* $HOME/Music
+ln -sv /media/$USER/work/* $HOME/Documents
+rm $HOME/Documents/lost+found
+
+# Copy configs.
+cp -rv $HOME/Templates/dotfiles/{.bash_aliases,.bashrc,.gdbinit,.gitconfig,\
+        .vimrc,.Xresources,.tmux.conf,.minidlna,.profile} $HOME
+cp $HOME/Templates/dotfiles/{compton.conf,redshift.conf} $HOME/.config
+cp $HOME/Templates/dotfiles/lxde-rc.xml $HOME/.config/openbox
+mkdir $HOME/.vim
+cp -rv $HOME/Templates/gruvbox/colors $HOME/.vim
 mocp -S
-ln -svf ~/Templates/dotfiles/config ~/.moc
+cp $HOME/Templates/dotfiles/config $HOME/.moc
+
+# Setup cron jobs.
+(crontab -l && echo "0 23 * * * rsync -urv --delete --exclude='/lost+found' \
+        /media/weezy/work/* /media/weezy/stuff/work") | crontab -
+
+# Fix hanging on copying files.
+sudo echo 'echo $((16*1024*1024)) > \
+        /proc/sys/vm/dirty_background_bytes' >> /etc/rc.local
+sudo echo 'echo $((48*1024*1024)) > \
+        /proc/sys/vm/dirty_bytes' >> /etc/rc.local
+
+# Change swappiness.
+sudo sysctl -w vm.swappiness=10
+sudo echo 'vm.swappiness=10' >> sudo vi /etc/sysctl.conf
+sudo echo 'vm.swappiness=10' >> sudo vi /etc/sysctl.d/local.conf
+
+# Unpack glibc source.
 sudo tar xf /usr/src/glibc/glibc-2.19.tar.xz -C /usr/src/glibc
-crontab -e
-sudo vi /etc/rc.local
