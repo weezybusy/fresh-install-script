@@ -26,7 +26,7 @@ cp $HOME/Templates/dotfiles/config $HOME/.moc
 
 # Setup cron jobs.
 (crontab -l && echo "0 23 * * * rsync -urv --delete --exclude='/lost+found' \
-        /media/weezy/work/* /media/weezy/stuff/work") | crontab -
+        /media/$USER/work/* /media/$USER/stuff/work") | crontab -
 
 # Fix hanging on copying files.
 sudo echo 'echo $((16*1024*1024)) > \
