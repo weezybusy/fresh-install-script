@@ -25,6 +25,7 @@ ln -svf $HOME/Templates/gruvbox/colors $HOME/.vim
 mocp -S
 ln -svf $HOME/Templates/dotfiles/config $HOME/.moc
 ln -svf $HOME/Templates/dotfiles/minidlna $HOME/.local/bin
+ln -svf $HOME/Templates/dotfiles/fontconfig $HOME/.config
 
 # Setup cron jobs.
 (crontab -l && echo "0 23 * * * rsync -urv --delete --exclude='/lost+found' \
