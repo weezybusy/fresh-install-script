@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Install apps.
-eudo apt -y install compton xbacklight alsa-utils lxappearance pavucontrol \
+sudo apt -y install compton xbacklight alsa-utils lxappearance pavucontrol \
         redshift gcc valgrind make glibc-source tmux vim python3-pip moc \
         wicd minidlna qalculate gparted deluge chromium
 pip3 install --upgrade --user pip youtube-dl pyradio
@@ -16,14 +16,15 @@ ln -sv /media/$USER/work/* $HOME/Documents
 rm $HOME/Documents/lost+found
 
 # Copy configs.
-cp -rv $HOME/Templates/dotfiles/{.bash_aliases,.bashrc,.gdbinit,.gitconfig,\
+ln -svf $HOME/Templates/dotfiles/{.bash_aliases,.bashrc,.gdbinit,.gitconfig,\
         .vimrc,.Xresources,.tmux.conf,.minidlna,.profile} $HOME
-cp $HOME/Templates/dotfiles/{compton.conf,redshift.conf} $HOME/.config
-cp $HOME/Templates/dotfiles/lxde-rc.xml $HOME/.config/openbox
+ln -svf $HOME/Templates/dotfiles/{compton.conf,redshift.conf} $HOME/.config
+mv $HOME/.config/openbox/lxde-rc.xml $HOME/.config/openbox/lxde-rc.xml.origin
+ln -svf $HOME/Templates/dotfiles/lxde-rc.xml $HOME/.config/openbox
 mkdir $HOME/.vim
-cp -rv $HOME/Templates/gruvbox/colors $HOME/.vim
+ln -svf $HOME/Templates/gruvbox/colors $HOME/.vim
 mocp -S
-cp $HOME/Templates/dotfiles/config $HOME/.moc
+ln -svf $HOME/Templates/dotfiles/config $HOME/.moc
 
 # Setup cron jobs.
 (crontab -l && echo "0 23 * * * rsync -urv --delete --exclude='/lost+found' \
