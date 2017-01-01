@@ -1,8 +1,9 @@
 #!/bin/bash
 
 # Install apps.
-sudo apt -y install compton xbacklight pavucontrol redshift gcc valgrind \
-        make glibc-source tmux vim python3-pip moc minidlna qalculate gparted
+eudo apt -y install compton xbacklight alsa-utils lxappearance pavucontrol \
+        redshift gcc valgrind make glibc-source tmux vim python3-pip moc \
+        wicd minidlna qalculate gparted deluge chromium
 pip3 install --upgrade --user pip youtube-dl pyradio
 
 # Add repos.
@@ -27,17 +28,6 @@ cp $HOME/Templates/dotfiles/config $HOME/.moc
 # Setup cron jobs.
 (crontab -l && echo "0 23 * * * rsync -urv --delete --exclude='/lost+found' \
         /media/$USER/work/* /media/$USER/stuff/work") | crontab -
-
-# Fix hanging on copying files.
-sudo echo 'echo $((16*1024*1024)) > \
-        /proc/sys/vm/dirty_background_bytes' >> /etc/rc.local
-sudo echo 'echo $((48*1024*1024)) > \
-        /proc/sys/vm/dirty_bytes' >> /etc/rc.local
-
-# Change swappiness.
-sudo sysctl -w vm.swappiness=10
-sudo echo 'vm.swappiness=10' >> sudo vi /etc/sysctl.conf
-sudo echo 'vm.swappiness=10' >> sudo vi /etc/sysctl.d/local.conf
 
 # Unpack glibc source.
 sudo tar xf /usr/src/glibc/glibc-2.19.tar.xz -C /usr/src/glibc
