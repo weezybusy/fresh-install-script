@@ -11,13 +11,12 @@ git clone https://github.com/weezybusy/dotfiles.git $HOME/Templates/dotfiles
 git clone https://github.com/morhetz/gruvbox.git $HOME/Templates/gruvbox
 
 # Make links.
-ln -sv /media/$USER/stuff/music/* $HOME/Music
-ln -sv /media/$USER/work/* $HOME/Documents
+ln -svf /media/$USER/stuff/music/* $HOME/Music
+ln -svf /media/$USER/work/* $HOME/Documents
 rm $HOME/Documents/lost+found
 
 # Copy configs.
-ln -svf $HOME/Templates/dotfiles/{.bash_aliases,.bashrc,.gdbinit,.gitconfig,\
-        .vimrc,.Xresources,.tmux.conf,.minidlna,.profile} $HOME
+ln -svf $HOME/Templates/dotfiles/{.bash_aliases,.bashrc,.gdbinit,.gitconfig,.vimrc,.Xresources,.tmux.conf,.minidlna,.profile} $HOME
 ln -svf $HOME/Templates/dotfiles/{compton.conf,redshift.conf} $HOME/.config
 mv $HOME/.config/openbox/lxde-rc.xml $HOME/.config/openbox/lxde-rc.xml.origin
 ln -svf $HOME/Templates/dotfiles/lxde-rc.xml $HOME/.config/openbox
@@ -25,6 +24,7 @@ mkdir $HOME/.vim
 ln -svf $HOME/Templates/gruvbox/colors $HOME/.vim
 mocp -S
 ln -svf $HOME/Templates/dotfiles/config $HOME/.moc
+ln -svf $HOME/Templates/dotfiles/minidlna $HOME/.local/bin
 
 # Setup cron jobs.
 (crontab -l && echo "0 23 * * * rsync -urv --delete --exclude='/lost+found' \
