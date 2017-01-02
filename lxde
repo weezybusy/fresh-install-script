@@ -28,8 +28,7 @@ ln -svf $HOME/Templates/dotfiles/minidlna $HOME/.local/bin
 ln -svf $HOME/Templates/dotfiles/fontconfig $HOME/.config
 
 # Setup cron jobs.
-(crontab -l && echo "0 23 * * * rsync -urv --delete --exclude='/lost+found' \
-        /media/$USER/work/* /media/$USER/stuff/work") | crontab -
+(crontab -l && echo "0 23 * * * rsync -urv --delete --exclude='/lost+found /media/$USER/work/* /media/$USER/stuff/work") | crontab -
 
 # Unpack glibc source.
 sudo tar xf /usr/src/glibc/glibc-2.19.tar.xz -C /usr/src/glibc
