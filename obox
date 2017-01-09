@@ -17,6 +17,7 @@ ln -svf /media/$USER/work/* $HOME/Documents
 rm $HOME/Documents/lost+found
 ln -svf $HOME/Templates/dotfiles/{.bash_aliases,.bashrc,.gdbinit,.gitconfig,.vimrc,.Xresources,.tmux.conf,.minidlna,.profile} $HOME
 ln -svf $HOME/Templates/dotfiles/{compton.conf,redshift.conf,.tint2} $HOME/.config
+mkdir ~/.config/openbox
 ln -svf $HOME/Templates/dotfiles/{rc.xml,autostart} $HOME/.config/openbox
 mkdir $HOME/.vim
 ln -svf $HOME/Templates/gruvbox/colors $HOME/.vim
