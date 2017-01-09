@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# Install apps.
+sudo apt -y install compton pcmanfm gmrun tint2 xbacklight pavucontrol \
+    redshift gcc valgrind make glibc-source tmux vim python3-pip moc wicd \
+    minidlna qalculate gparted deluge chromium
+pip3 install --upgrade --user pip youtube-dl pyradio
+
+# Add repos.
+git clone https://github.com/weezybusy/dotfiles.git $HOME/Templates/dotfiles
+git clone https://github.com/morhetz/gruvbox.git $HOME/Templates/gruvbox
+
+# Make links.
+ln -svf /media/$USER/stuff/music/* $HOME/Music
+ln -svf /media/$USER/work/* $HOME/Documents
+rm $HOME/Documents/lost+found
+ln -svf $HOME/Templates/dotfiles/{.bash_aliases,.bashrc,.gdbinit,.gitconfig,.vimrc,.Xresources,.tmux.conf,.minidlna,.profile,.xinitrc} $HOME
+ln -svf $HOME/Templates/dotfiles/{compton.conf,redshift.conf,tint2} $HOME/.config
+mv $HOME/.config/openbox/rc.xml $HOME/.config/openbox/rc.xml.bak
+ln -svf $HOME/Templates/dotfiles/{rc.xml,autostart} $HOME/.config/openbox
+mkdir $HOME/.vim
+ln -svf $HOME/Templates/gruvbox/colors $HOME/.vim
+mocp -S
+ln -svf $HOME/Templates/dotfiles/config $HOME/.moc
+ln -svf $HOME/Templates/dotfiles/minidlna $HOME/.local/bin
+ln -svf $HOME/Templates/dotfiles/fontconfig $HOME/.config
+
+# Setup cron jobs.
+(crontab -l && echo "0 23 * * * rsync -urv --delete --exclude='/lost+found /media/$USER/work/* /media/$USER/stuff/work") | crontab -
+
+# Unpack glibc source.
+sudo tar xf /usr/src/glibc/glibc-2.19.tar.xz -C /usr/src/glibc
