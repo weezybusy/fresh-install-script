@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Install apps.
-sudo apt -y install compton pcmanfm gmrun xbacklight pavucontrol \
+sudo apt -y install compton tint2 pcmanfm gmrun xbacklight pavucontrol \
     redshift gcc valgrind make glibc-source tmux python3-pip moc wicd \
-    minidlna qalculate gparted deluge chromium vim
+    minidlna qalculate gparted deluge chromium vim gnome-icon-theme feh
 pip3 install --upgrade --user pip youtube-dl pyradio
 
 # Add repos.
@@ -15,7 +15,7 @@ ln -svf /media/$USER/stuff/music/* $HOME/Music
 ln -svf /media/$USER/work/* $HOME/Documents
 rm $HOME/Documents/lost+found
 ln -svf $HOME/Templates/dotfiles/{.bash_aliases,.bashrc,.gdbinit,.gitconfig,.vimrc,.Xresources,.tmux.conf,.minidlna,.profile} $HOME
-ln -svf $HOME/Templates/dotfiles/{compton.conf,redshift.conf} $HOME/.config
+ln -svf $HOME/Templates/dotfiles/{compton.conf,redshift.conf,.tint2} $HOME/.config
 ln -svf $HOME/Templates/dotfiles/{rc.xml,autostart} $HOME/.config/openbox
 mkdir $HOME/.vim
 ln -svf $HOME/Templates/gruvbox/colors $HOME/.vim
@@ -32,3 +32,4 @@ sudo tar xf /usr/src/glibc/glibc-2.19.tar.xz -C /usr/src/glibc
 
 # Get ability to use bitmap fonts.
 sudo rm /etc/fonts/conf.d/70-no-bitmaps.conf
+gksudo wicd-client
