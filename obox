@@ -52,6 +52,7 @@ if [ ! -d ~/.minidlna ]; then
 fi
 ln -svf $DOTS/minidlna.conf ~/.minidlna
 ln -svf $DOTS/minidlna ~/.local/bin
+sudo mv /etc/init.d/minidlna /etc/init.d/minidlna.bak
 
 # Setup cron jobs.
 (crontab -l && echo "0 23 * * * rsync -urv --delete --exclude='/lost+found $WORK/* $STUFF/work") | crontab -
