@@ -17,8 +17,8 @@ if [ ! -d $DOTS ]; then
 fi
 
 # Make links.
-ln -svf $STUFF/music/* ~/Music
-ln -svf $WORK/* ~/Documents
+ln -svf $STUFF/music/* ~/Music/
+ln -svf $WORK/* ~/Documents/
 
 if [ -f ~/Documents/lost+found ]; then
         rm ~/Documents/lost+found
