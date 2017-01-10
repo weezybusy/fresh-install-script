@@ -12,12 +12,8 @@ sudo apt -y install compton tint2 pcmanfm gmrun xbacklight pavucontrol \
 pip3 install --upgrade --user pip youtube-dl pyradio
 
 # Add repos.
-if [ ! -d $DOTS/dotfiles ]; then
-        git clone https://github.com/weezybusy/dotfiles.git $DOTS/dotfiles
-fi
-
-if [ ! -d $DOTS/gruvbox ]; then
-        git clone https://github.com/morhetz/gruvbox.git $DOTS/gruvbox
+if [ ! -d $DOTS ]; then
+        git clone https://github.com/weezybusy/dotfiles.git $DOTS
 fi
 
 # Make links.
@@ -40,9 +36,15 @@ ln -svf $DOTS/{rc.xml,autostart} ~/.config/openbox
 if [ ! -d ~/.vim ]; then
         mkdir ~/.vim
 fi
-ln -svf $DOTS/gruvbox/colors ~/.vim
 
-mocp -S
+if [ ! -d ~/.vim/gruvbox ]; then
+        git clone https://github.com/morhetz/gruvbox.git ~/.vim/gruvbox
+        ln -svf ~/.vim/gruvbox/colors ~/.vim
+fi
+
+if [ ! $(pgrep mocp) ]; then
+        mocp -S
+fi
 ln -svf $DOTS/config ~/.moc
 
 if [ ! -d ~/.minidlna ]; then
