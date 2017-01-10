@@ -57,8 +57,8 @@ ln -svf $DOTS/config ~/.moc
 if [ ! -d ~/.minidlna ]; then
         mkdir ~/.minidlna
 fi
-ln -svf $DOTS/minidlna.conf ~/.minidlna
-ln -svf $DOTS/minidlna ~/.local/bin
+cp /etc/minidlna.conf ~/.minidlna
+cp /etc/init.d/minidlna ~/.local/bin
 sudo mv /etc/init.d/minidlna /etc/init.d/minidlna.bak
 
 # Setup cron jobs.
