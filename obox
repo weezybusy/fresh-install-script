@@ -5,7 +5,7 @@ STUFF=/media/$USER/stuff
 WORK=/media/$USER/work
 
 # Install apps.
-sudo apt -y install compton tint2 pcmanfm gmrun xbacklight pavucontrol \
+sudo apt -y install compton pcmanfm gmrun xbacklight pavucontrol \
     redshift gcc valgrind make glibc-source tmux python3-pip moc wicd \
     minidlna qalculate gparted deluge firefox-esr vim gnome-icon-theme feh \
     lxappearance alsa-utils
@@ -32,13 +32,12 @@ if [ -f ~/Documents/lost+found ]; then
 fi
 
 ln -svf $DOTS/{.bash_aliases,.bashrc,.gdbinit,.gitconfig,.vimrc,.Xresources,.tmux.conf,.profile} ~
-ln -svf $DOTS/{compton.conf,redshift.conf,tint2,fontconfig} ~/.config
+ln -svf $DOTS/{compton.conf,redshift.conf,fontconfig} ~/.config
 
 if [ ! -d ~/.config/openbox ]; then
         mkdir ~/.config/openbox
 fi
 ln -svf $DOTS/{rc.xml,autostart} ~/.config/openbox
-
 
 if [ ! -d ~/.vim ]; then
         mkdir ~/.vim
