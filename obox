@@ -7,8 +7,8 @@ WORK=/media/$USER/work
 # Install apps.
 sudo apt -y install compton tint2 pcmanfm gmrun xbacklight pavucontrol \
     redshift gcc valgrind make glibc-source tmux python3-pip moc wicd \
-    minidlna qalculate gparted deluge chromium vim gnome-icon-theme feh \
-    lxappearance alsa-utils menu libnotify-bin evince
+    minidlna qalculate gparted deluge firefox-esr vim gnome-icon-theme feh \
+    lxappearance alsa-utils menu libnotify-bin
 pip3 install --upgrade --user pip youtube-dl pyradio
 
 # Get dot-files.
