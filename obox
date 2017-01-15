@@ -53,12 +53,14 @@ if [ ! $(pgrep mocp) ]; then
 fi
 ln -svf $DOTS/config ~/.moc
 
+# Setup minidlna.
+sudo mv /etc/init.d/minidlna /etc/init.d/minidlna.bak
+sudo mv /etc/minidlna.conf /etc/minidlna.conf.bak
 if [ ! -d ~/.minidlna ]; then
         mkdir ~/.minidlna
 fi
-cp /etc/minidlna.conf ~/.minidlna
-cp /etc/init.d/minidlna ~/.local/bin
-sudo mv /etc/init.d/minidlna /etc/init.d/minidlna.bak
+cp $DOTS/minidlna.conf ~/.minidlna
+cp $DOTS/minidlna ~/.local/bin
 
 # Setup cron jobs.
 (crontab -l && echo "0 23 * * * rsync -urv --delete --exclude='/lost+found $WORK/* $STUFF/work") | crontab -
