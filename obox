@@ -1,4 +1,5 @@
 #!/bin/bash
+# Author: Vitaliy Pisnya
 
 DOTS=~/Templates/dotfiles
 STUFF=/media/$USER/stuff
@@ -62,9 +63,6 @@ fi
 cp $DOTS/minidlna.conf ~/.minidlna
 cp $DOTS/minidlna ~/.local/bin
 
-# Setup cron jobs.
-(crontab -l && echo "0 23 * * * rsync -urv --delete --exclude='/lost+found $WORK/* $STUFF/work") | crontab -
-
 # Unpack glibc source.
 if [ ! -d /usr/src/glibc/glibc-2.19 ]; then
         sudo tar xf /usr/src/glibc/glibc-2.19.tar.xz -C /usr/src/glibc
@@ -75,3 +73,7 @@ fi
 if [ -f /etc/fonts/conf.d/70-no-bitmaps.conf ]; then
         sudo rm /etc/fonts/conf.d/70-no-bitmaps.conf
 fi
+
+# Setup cron jobs.
+(crontab -l && echo "0 23 * * * rsync -urv --delete --exclude='/lost+found $WORK/* $STUFF/work") | crontab -
+
