@@ -12,7 +12,7 @@ sudo apt -y install compton pcmanfm gmrun xbacklight pavucontrol \
     lxappearance alsa-utils xarchiver feh
 pip3 install --upgrade --user pip youtube-dl pyradio
 
-# Get dot-files.
+# Download dot-files.
 if [ ! -d $DOTS ]; then
         git clone https://github.com/weezybusy/dotfiles.git $DOTS
 fi
@@ -40,6 +40,7 @@ if [ ! -d ~/.config/openbox ]; then
 fi
 ln -svf $DOTS/{rc.xml,autostart} ~/.config/openbox
 
+# Setup vim colorscheme.
 if [ ! -d ~/.vim ]; then
         mkdir ~/.vim
 fi
@@ -49,19 +50,17 @@ if [ ! -d ~/.vim/gruvbox ]; then
         ln -svf ~/.vim/gruvbox/colors ~/.vim
 fi
 
-if [ ! $(pgrep mocp) ]; then
-        mocp -S
+# Setup moc.
+if [ ! -d ~/.moc ]; then
+        mkdir ~/.moc
 fi
 ln -svf $DOTS/config ~/.moc
 
 # Setup minidlna.
-sudo mv /etc/init.d/minidlna /etc/init.d/minidlna.bak
-sudo mv /etc/minidlna.conf /etc/minidlna.conf.bak
 if [ ! -d ~/.minidlna ]; then
         mkdir ~/.minidlna
 fi
-cp $DOTS/minidlna.conf ~/.minidlna
-cp $DOTS/minidlna ~/.local/bin
+ln -svf $DOTS/minidlna.conf ~/.minidlna
 
 # Unpack glibc source.
 if [ ! -d /usr/src/glibc/glibc-2.19 ]; then
