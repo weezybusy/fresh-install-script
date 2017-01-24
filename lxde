@@ -63,3 +63,6 @@ if [ ! -d /usr/src/glibc/glibc-2.19 ]; then
         sudo tar xf /usr/src/glibc/glibc-2.19.tar.xz -C /usr/src/glibc
         sudo rm /usr/src/glibc/glibc-2.19.tar.xz
 fi
+
+# Setup cron jobs.
+(crontab -l && echo "0 23 * * * rsync -urv --delete --exclude='/lost+found' $WORK/* $STUFF/work") | crontab -

@@ -74,5 +74,5 @@ if [ -f /etc/fonts/conf.d/70-no-bitmaps.conf ]; then
 fi
 
 # Setup cron jobs.
-(crontab -l && echo "0 23 * * * rsync -urv --delete --exclude='/lost+found $WORK/* $STUFF/work") | crontab -
+(crontab -l && echo "0 23 * * * rsync -urv --delete --exclude='/lost+found' $WORK/* $STUFF/work") | crontab -
 
