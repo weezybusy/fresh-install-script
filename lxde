@@ -54,8 +54,8 @@ ln -svf $DOTS/autostart ~/.config/lxsession/LXDE
 # Setup minidlna.
 sudo mv /etc/minidlna.conf /etc/minidlna.conf.bak
 sudo mv /etc/init.d/minidlna /etc/init.d/minidlna.bak
-cp $DOTS/minidlna.conf ~/.minidlna
-cp $DOTS/minidlna ~/.local/bin
+ln -svf $DOTS/minidlna.conf ~/.minidlna
+ln -svf $DOTS/minidlna ~/.local/bin
 chmod +x ~/.local/bin/minidlna
 
 # Unpack glibc source.
