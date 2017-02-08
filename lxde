@@ -15,7 +15,8 @@ done
 
 # Install apps.
 sudo apt -y install compton xbacklight pavucontrol redshift gcc valgrind make \
-        glibc-source tmux python3-pip moc qalculate gparted vim minidlna gmrun
+        glibc-source screen python3-pip moc qalculate gparted vim minidlna \
+        gmrun fonts-roboto
 pip3 install --upgrade --user pip youtube-dl pyradio
 
 # Download dot-files.
@@ -41,7 +42,7 @@ if [ -f ~/Documents/lost+found ]; then
         rm ~/Documents/lost+found
 fi
 
-ln -svf $DOTS/{.bash_aliases,.bashrc,.gdbinit,.gitconfig,.vimrc,.Xresources,.tmux.conf,.profile} ~
+ln -svf $DOTS/{.bash_aliases,.bashrc,.gdbinit,.gitconfig,.vimrc,.Xresources,.screenrc,.profile} ~
 ln -svf $DOTS/{compton.conf,redshift.conf,fontconfig} ~/.config
 ln -svf ~/.vim/gruvbox/colors ~/.vim
 ln -svf $DOTS/config ~/.moc
