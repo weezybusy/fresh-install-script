@@ -1,22 +1,22 @@
 #!/bin/bash
 # Author: Vitaliy Pisnya
 
-#DIRS=(~/.vim ~/.moc ~/.minidlna ~/.local/bin)
-#DOTS=~/Templates/dotfiles
-#STUFF=/media/$USER/stuff
-#TELEGRAMDIR=~/.local/bin/telegram
-#WORK=/media/$USER/work
+DIRS=(~/.vim ~/.moc ~/.minidlna ~/.local/bin)
+DOTS=~/Templates/dotfiles
+STUFF=/media/$USER/stuff
+TELEGRAMDIR=~/.local/bin/telegram
+WORK=/media/$USER/work
 
 # Create needed directories.
-#let i=0
-#for dir in "${DIRS[@]}"; do
-#        mkdir -p $dir
-#done
-#
+let i=0
+for dir in "${DIRS[@]}"; do
+    mkdir -p $dir
+done
+
 # Install apps.
-sudo apt -y install redshift gcc valgrind make screen python3-pip moc      \
-        qalculate gparted vim minidlna fonts-roboto gnome-brave-icon-theme \
-        gnome-colors
+sudo apt -y install redshift gcc pkg-config libgtk-3-dev valgrind make screen \
+    python3-pip moc qalculate gparted vim minidlna fonts-roboto gnome-colors \
+    gnome-brave-icon-theme
 
 read -p "Do you want to install compton? [y/n]: " input
 if [ "$input" = "y" ]; then
@@ -43,72 +43,69 @@ if [ "$input" = "y" ]; then
     sudo apt -y install gmrun
 fi
 
-read -p "Do you want to install zathura? [y/n]: " input
-if [ "$input" = "y" ]; then
-    sudo apt -y install zathura
-fi
-
-read -p "Do you want to install xpad? [y/n]: " input
-if [ "$input" = "y" ]; then
-    sudo apt -y install xpad
-fi
-
 read -p "Do you want to install deluge? [y/n]: " input
 if [ "$input" = "y" ]; then
     sudo apt -y install deluge
 fi
 
-#pip3 install --upgrade --user pip youtube-dl
-#
-## Download dot-files.
-#git clone https://github.com/weezybusy/dotfiles.git $DOTS
-#
-## Download vim colorscheme.
-#git clone https://github.com/morhetz/gruvbox.git ~/.vim/gruvbox
-#
-## Make links.
-#if mount | grep $STUFF > /dev/null; then
-#    cp -r $STUFF/apps/telegram ~/.local/bin
-#    chmod +x $TELEGRAMDIR/Telegram
-#    chmod +x $TELEGRAMDIR/Updater
-#    ln -svf $STUFF/music/* ~/Music/
-#    ln -svf $STUFF/videos/* ~/Videos/
-#fi
-#
-#if mount | grep $WORK > /dev/null; then
-#    ln -svf $WORK/* ~/Documents/
-#fi
-#
-#if [ -f ~/Documents/lost+found ]; then
-#    rm ~/Documents/lost+found
-#fi
-#
-#ln -svf $DOTS/{.bash_aliases,.bashrc,.gdbinit,.gitconfig,.vimrc,.Xresources,.screenrc,.profile} ~
-#ln -svf $DOTS/{compton.conf,redshift.conf,fontconfig} ~/.config
-#ln -svf ~/.vim/gruvbox/colors ~/.vim
-#ln -svf $DOTS/config ~/.moc
-#
-## Setup openbox.
-#mv ~/.config/openbox/lxde-rc.xml ~/.config/openbox/lxde-rc.xml.bak
-#ln -svf $DOTS/lxde-rc.xml ~/.config/openbox
-#ln -svf $DOTS/autostart ~/.config/lxsession/LXDE
-#
-## Setup minidlna.
-#sudo mv /etc/minidlna.conf /etc/minidlna.conf.bak
-#sudo mv /etc/init.d/minidlna /etc/init.d/minidlna.bak
-#ln -svf $DOTS/minidlna.conf ~/.minidlna
-#ln -svf $DOTS/minidlna ~/.local/bin
-#chmod +x ~/.local/bin/minidlna
+pip3 install --upgrade --user pip youtube-dl
+
+# Download dot-files.
+git clone https://github.com/weezybusy/dotfiles.git $DOTS
+
+# Download vim colorscheme.
+git clone https://github.com/morhetz/gruvbox.git ~/.vim/gruvbox
+
+# Setup 4 space indentation for bash scripts.
+mkdir -p "~/.vim/after/ftplugin/"
+echo "setlocal shiftwidth=4" >> "~/.vim/after/ftplugin/sh.vim"
+echo "setlocal tabstop=4" >> "~/.vim/after/ftplugin/sh.vim"
+
+# Make links.
+if mount | grep $STUFF > /dev/null; then
+    cp -r $STUFF/apps/telegram ~/.local/bin
+    chmod +x $TELEGRAMDIR/Telegram
+    chmod +x $TELEGRAMDIR/Updater
+    ln -svf $STUFF/music/* ~/Music/
+    ln -svf $STUFF/videos/* ~/Videos/
+fi
+
+if mount | grep $WORK > /dev/null; then
+    ln -svf $WORK/* ~/Documents/
+fi
+
+if [ -f ~/Documents/lost+found ]; then
+    rm ~/Documents/lost+found
+fi
+
+ln -svf $DOTS/{.bash_aliases,.bashrc,.gdbinit,.gitconfig,.vimrc,.Xresources,.screenrc,.profile} ~
+ln -svf $DOTS/{compton.conf,redshift.conf,fontconfig} ~/.config
+ln -svf ~/.vim/gruvbox/colors ~/.vim
+ln -svf $DOTS/config ~/.moc
+
+# Setup openbox.
+mv ~/.config/openbox/lxde-rc.xml ~/.config/openbox/lxde-rc.xml.bak
+ln -svf $DOTS/lxde-rc.xml ~/.config/openbox
+ln -svf $DOTS/autostart ~/.config/lxsession/LXDE
+
+# Setup minidlna.
+sudo mv /etc/minidlna.conf /etc/minidlna.conf.bak
+sudo mv /etc/init.d/minidlna /etc/init.d/minidlna.bak
+ln -svf $DOTS/minidlna.conf ~/.minidlna
+ln -svf $DOTS/minidlna ~/.local/bin
+chmod +x ~/.local/bin/minidlna
 
 # Unpack glibc source.
 read -p "Do you want to download and unpack glibc library? [y/n]: " input
 if [ "$input" = "y" ]; then
     sudo apt -y install glibc-source
     if [ ! -d /usr/src/glibc/glibc-2.19 ]; then
-            sudo tar xf /usr/src/glibc/glibc-2.19.tar.xz -C /usr/src/glibc
-            sudo rm /usr/src/glibc/glibc-2.19.tar.xz
+        sudo tar xf /usr/src/glibc/glibc-2.19.tar.xz -C /usr/src/glibc
+        sudo rm /usr/src/glibc/glibc-2.19.tar.xz
     fi
 fi
 
-## Setup cron jobs.
-#(crontab -l && echo "0 23 * * * rsync -urv --delete --exclude='/lost+found' $WORK/* $STUFF/work") | crontab -
+# Setup cron jobs.
+(crontab -l && echo "0 23 * * * rsync -urv --delete --exclude='/lost+found' $WORK/* $STUFF/work") | crontab -
+(crontab -l && echo "0 22 * * * pip3 install --user pip youtube-dl numpy scipy ipython pandas notebook setuptools --upgrade") | crontab -
+
