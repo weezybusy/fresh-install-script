@@ -107,5 +107,5 @@ fi
 
 # Setup cron jobs.
 (crontab -l && echo "0 23 * * * rsync -urv --delete --exclude='/lost+found' $WORK/* $STUFF/work") | crontab -
-(crontab -l && echo "0 22 * * * pip3 install --user pip youtube-dl numpy scipy ipython pandas notebook setuptools --upgrade") | crontab -
+(crontab -l && echo "0 22 * * * pip3 install --user pip youtube-dl --upgrade") | crontab -
 
