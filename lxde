@@ -16,7 +16,7 @@ done
 # Install apps.
 sudo apt -y install redshift gcc pkg-config libgtk-3-dev valgrind make screen \
     python3-pip moc qalculate gparted vim minidlna fonts-roboto gnome-colors \
-    gnome-brave-icon-theme
+    gnome-brave-icon-theme emacs24
 
 read -p "Do you want to install compton? [y/n]: " input
 if [ "$input" = "y" ]; then
@@ -78,7 +78,8 @@ if [ -f ~/Documents/lost+found ]; then
     rm ~/Documents/lost+found
 fi
 
-ln -svf $DOTS/{.bash_aliases,.bashrc,.gdbinit,.gitconfig,.vimrc,.Xresources,.screenrc,.profile} ~
+ln -svf
+$DOTS/{.bash_aliases,.bashrc,.gdbinit,.gitconfig,.vimrc,.Xresources,.screenrc,.profile,.emacs} ~
 ln -svf $DOTS/{compton.conf,redshift.conf,fontconfig} ~/.config
 ln -svf ~/.vim/gruvbox/colors ~/.vim
 ln -svf $DOTS/config ~/.moc
