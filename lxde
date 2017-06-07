@@ -16,7 +16,7 @@ done
 # Install apps.
 sudo apt -y install redshift gcc pkg-config libgtk-3-dev valgrind make screen \
     python3-pip moc qalculate gparted vim minidlna fonts-roboto gnome-colors \
-    gnome-brave-icon-theme emacs
+    gnome-brave-icon-theme emacs ufw racket
 
 read -p "Do you want to install compton? [y/n]: " input
 if [ "$input" = "y" ]; then
