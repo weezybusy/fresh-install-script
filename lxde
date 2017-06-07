@@ -50,6 +50,10 @@ fi
 
 pip3 install --upgrade --user pip youtube-dl
 
+# Enable firewall.
+echo "Enabling firewall..."
+sudo ufw enable && sudo ufw allow 8200
+
 # Download dot-files.
 git clone https://github.com/weezybusy/dotfiles.git $DOTS
 
