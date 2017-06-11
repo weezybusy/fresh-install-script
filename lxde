@@ -6,6 +6,11 @@ DOTS=~/Templates/dotfiles
 STUFF=/media/$USER/stuff
 TELEGRAMDIR=~/.local/bin/telegram
 WORK=/media/$USER/work
+APPS="redshift gcc pkg-config libgtk-3-dev valgrind make screen python3-pip
+        moc qalculate gparted vim minidlna fonts-roboto gnome-colors racket
+        gnome-brave-icon-theme emacs ufw compton xbacklight gmrun deluge
+        libav-tools pavucontrol"
+PYAPPS="pip youtube-dl"
 
 # Create needed directories.
 let i=0
@@ -14,56 +19,26 @@ for dir in "${DIRS[@]}"; do
 done
 
 # Install apps.
-sudo apt -y install redshift gcc pkg-config libgtk-3-dev valgrind make screen \
-    python3-pip moc qalculate gparted vim minidlna fonts-roboto gnome-colors \
-    gnome-brave-icon-theme emacs ufw racket
-
-read -p "Do you want to install compton? [y/n]: " input
-if [ "$input" = "y" ]; then
-    sudo apt -y install compton
-fi
-
-read -p "Do you want to install xbacklight? [y/n]: " input
-if [ "$input" = "y" ]; then
-    sudo apt -y install xbacklight
-fi
-
-read -p "Do you want to install pavucontrol? [y/n]: " input
-if [ "$input" = "y" ]; then
-    sudo apt -y install pavucontrol
-fi
-
-read -p "Do you want to install libav-tools? [y/n]: " input
-if [ "$input" = "y" ]; then
-    sudo apt -y install libav-tools
-fi
-
-read -p "Do you want to install gmrun? [y/n]: " input
-if [ "$input" = "y" ]; then
-    sudo apt -y install gmrun
-fi
-
-read -p "Do you want to install deluge? [y/n]: " input
-if [ "$input" = "y" ]; then
-    sudo apt -y install deluge
-fi
-
-pip3 install --upgrade --user pip youtube-dl
+sudo apt -y install $APPS
+pip3 install --upgrade --user $PYAPPS
 
 # Enable firewall.
 echo "Enabling firewall..."
 sudo ufw enable && sudo ufw allow 8200
 
-# Download dot-files.
+# Download dotfiles.
 git clone https://github.com/weezybusy/dotfiles.git $DOTS
 
-# Download vim colorscheme.
+# Download vim color schemes.
 git clone https://github.com/morhetz/gruvbox.git ~/.vim/gruvbox
+git clone https://github.com/chriskempson/tomorrow-theme.git ~/.vim/tomorrow
 
-# Setup 4 space indentation for bash scripts.
+# Setup indentations for different languages.
 mkdir -p "~/.vim/after/ftplugin/"
 echo "setlocal shiftwidth=4" >> "~/.vim/after/ftplugin/sh.vim"
 echo "setlocal tabstop=4" >> "~/.vim/after/ftplugin/sh.vim"
+echo "setlocal shiftwidth=2" >> "~/.vim/after/ftplugin/scheme.vim"
+echo "setlocal tabstop=2" >> "~/.vim/after/ftplugin/scheme.vim"
 
 # Make links.
 if mount | grep $STUFF > /dev/null; then
@@ -82,10 +57,10 @@ if [ -f ~/Documents/lost+found ]; then
     rm ~/Documents/lost+found
 fi
 
-ln -svf
-$DOTS/{.bash_aliases,.bashrc,.gdbinit,.gitconfig,.vimrc,.Xresources,.screenrc,.profile,.emacs} ~
+ln -svf $DOTS/{.bash_aliases,.bashrc,.gdbinit,.gitconfig,.vimrc,.Xresources,.screenrc,.profile,.emacs} ~
 ln -svf $DOTS/{compton.conf,redshift.conf,fontconfig} ~/.config
 ln -svf ~/.vim/gruvbox/colors ~/.vim
+ln -svf ~/.vim/tomorrow/vim/colors ~/.vim
 ln -svf $DOTS/config ~/.moc
 
 # Setup openbox.
