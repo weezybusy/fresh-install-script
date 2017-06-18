@@ -4,7 +4,7 @@
 DIRS=(~/.vim ~/.moc ~/.minidlna ~/.local/bin)
 DOTS=~/Templates/dotfiles
 STUFF=/media/$USER/stuff
-TELEGRAMDIR=~/.local/bin/telegram
+TELEGRAMDIR=~/.local/bin/Telegram
 WORK=/media/$USER/work
 APPS="redshift gcc valgrind make screen python3-pip moc qalculate gparted 
 minidlna fonts-roboto racket emacs ufw compton xbacklight gmrun deluge
@@ -28,11 +28,12 @@ sudo ufw enable && sudo ufw allow 8200
 # Download dotfiles.
 git clone https://github.com/weezybusy/dotfiles.git $DOTS
 
-# Make links.
 if mount | grep $STUFF > /dev/null; then
-    cp -r $STUFF/apps/telegram ~/.local/bin
+    # Setup telegram.
+    cp -r $STUFF/apps/Telegram ~/.local/bin
     chmod +x $TELEGRAMDIR/Telegram
     chmod +x $TELEGRAMDIR/Updater
+    # Make links.
     ln -svf $STUFF/music/* ~/Music/
     ln -svf $STUFF/videos/* ~/Videos/
 fi
