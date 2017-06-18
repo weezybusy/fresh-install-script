@@ -1,20 +1,21 @@
 #!/bin/bash
 # Author: Vitaliy Pisnya
 
-DIRS=(~/.vim ~/.moc ~/.minidlna ~/.local/bin)
-DOTS=~/Templates/dotfiles
+DIRS=(~/.moc ~/.minidlna ~/.local/bin)
 STUFF=/media/$USER/stuff
 TELEGRAMDIR=~/.local/bin/Telegram
 WORK=/media/$USER/work
 APPS="redshift gcc valgrind make screen python3-pip moc qalculate gparted 
-minidlna fonts-roboto racket emacs ufw compton xbacklight gmrun deluge
+minidlna fonts-roboto racket emacs ufw compton xbacklight gmrun deluge 
 libav-tools pavucontrol"
 PYAPPS="pip youtube-dl"
 
 # Create needed directories.
 let i=0
 for dir in "${DIRS[@]}"; do
-    mkdir -p $dir
+    if [ ! -d $dir ]; then
+        mkdir -p $dir
+    fi 
 done
 
 # Install apps.
@@ -36,6 +37,7 @@ if mount | grep $STUFF > /dev/null; then
     # Make links.
     ln -svf $STUFF/music/* ~/Music/
     ln -svf $STUFF/videos/* ~/Videos/
+    ln -svf $SFUFF/documents/books/{math,prog} ~/Documents
 fi
 
 if mount | grep $WORK > /dev/null; then
@@ -46,7 +48,7 @@ if [ -f ~/Documents/lost+found ]; then
     rm ~/Documents/lost+found
 fi
 
-ln -svf $DOTS/{.bash_aliases,.bashrc,.gdbinit,.gitconfig,.vimrc,.Xresources,.screenrc,.profile,.emacs} ~
+ln -svf $DOTS/{.bash_aliases,.bashrc,.gdbinit,.gitconfig,.Xresources,.screenrc,.profile,.emacs} ~
 ln -svf $DOTS/{compton.conf,redshift.conf,fontconfig} ~/.config
 ln -svf $DOTS/config ~/.moc
 
